@@ -1,0 +1,57 @@
+package com.example.desafioWL.controller;
+
+import java.util.List;
+
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
+
+import com.example.desafioWL.entities.Item;
+import com.example.desafioWL.repositories.ItemRepository;
+import com.example.desafioWL.resources.exceptions.DatabaseException;
+import com.example.desafioWL.resources.exceptions.ResourceNotFoundException;
+
+@Service
+@Transactional
+@Controller
+public class ItemController {
+
+	@Autowired
+	private ItemRepository rep;
+
+	public List<Item> listAll(){
+		return this.rep.findAll();
+	}
+
+	public Item save(Item item) {
+		return this.rep.save(item);
+	}
+
+	public Item getItem(Long id) {
+		return this.rep.findById(id).orElseThrow(() -> new ResourceNotFoundException(id));
+	}
+	
+	public Item update(Long nome, Item obj) {
+		Item entity = rep.getOne(nome);
+		updateData(entity, obj);
+		return rep.save(entity);
+	}
+
+	private void updateData(Item entity, Item obj) {
+		entity.setName(obj.getName());
+	}
+
+	public void delete(Long id) {
+		try {
+			rep.deleteById(id);
+		} catch (EmptyResultDataAccessException e) {
+			throw new ResourceNotFoundException(id);
+		} catch (DataIntegrityViolationException e) {
+			throw new DatabaseException(e.getMessage());
+		}
+	}
+}

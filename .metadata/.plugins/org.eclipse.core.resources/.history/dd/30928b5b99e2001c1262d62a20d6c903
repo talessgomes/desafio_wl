@@ -1,0 +1,5 @@
+package com.example.desafioWL.entities.exception;
+
+public class ResourceExceptionHandler {
+
+}

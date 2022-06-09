@@ -1,0 +1,18 @@
+package com.example.desafioWL.services;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.example.desafioWL.entities.User;
+import com.example.desafioWL.repositories.UserRepository;
+
+public class UserService {
+
+	@Autowired //usado para fazer uma injeção de informação
+	private UserRepository repository;
+	
+	public List<User> findAll(){
+		return repository.findAll();
+	}
+}

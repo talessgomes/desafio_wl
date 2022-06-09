@@ -1,0 +1,7 @@
+package com.example.desafioWL.entities;
+
+public class Item {
+	
+	private Long id;
+	private Instant moment;
+}

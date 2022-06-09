@@ -1,0 +1,12 @@
+package com.example.desafioWL.repositories;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.example.desafioWL.entities.Item;
+//aqui é salvo os dados do banco 
+
+@Repository
+public interface ItemRepository extends JpaRepository<Item, Long> {
+
+}

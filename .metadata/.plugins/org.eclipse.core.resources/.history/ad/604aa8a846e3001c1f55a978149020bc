@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Sistema de Café da manhã</title>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+		integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+
+<body id="body-imagem">
+<h1>formulário</h1>
+
+	<div class="container my-2">
+		<h1>Sistema de Café da manhã</h1>
+		<hr>
+		<h2>Editar colaborador</h2>
+		<form action="#" th:action="@{/users/salvar}" th:object="${user}" method="POST">
+			<input type="hidden" id="id" th:field="*{id}">
+			<input type="text" th:field="*{nome}" placeholder="Nome">
+			<input type="text" th:field="*{cpf}" placeholder="CPF" >
+			<input type="text" th:field="*{item.item}" placeholder="Item" >
+			<button type="submit" class="btn btn-info col-2">Salvar</button>
+		</form>
+		<hr>
+		<a th:href="@{/users/}">Retornar para a lista de colaboradores</a>
+	</div>
+</body>
+
+</html>

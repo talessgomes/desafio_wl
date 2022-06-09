@@ -1,0 +1,11 @@
+package com.example.desafioWL.services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.example.desafioWL.repositories.UserRepository;
+
+public class UserService {
+
+	@Autowired //usado para fazer uma injeção de informação
+	private UserRepository repository
+}
